@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Todoアプリ</title>
+        <meta charset="utf-8">
+        <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+        <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <div id="app">
+            <header>
+                <div class="header">
+                    <h1 class="header-title">Todo</h1>
+                    <h3 class="header-sub" id="header-sub">{{headerMessage}}</h3>
+                </div>
+            </header>
+            <main>
+                <div class="input-form">
+                    <input v-model="addText" class="user-input">
+                    <input v-on:click="addTextToList" type="button" class="btn btn-success pl-3 pr-3" :value="buttonMessage">
+                </div>
+                <div>
+                    <ul class="pl-0">
+                        <li v-for="content in textList" :key="content.keys" class="text-list mr-0">
+                            <div class="text-contents">
+                                <p>
+                                    {{content.contents | isNull}}
+                                </p>
+                                <button v-on:click="changeText(content.keys)" type="button" class="btn btn-primary pl-3 pr-3">変更</button>
+                                <button v-on:click="deleteText(content.keys)" type="button" class="btn btn-danger pl-3 pr-3">削除</button>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </main>
+            <footer>
+                <hr>
+                <div class="footer">
+                    <p>(c)2020 Hubttery.sakura.ne.jp</p>
+                </div>
+            </footer>
+        </div>
+        <script src="script.js"></script>
+    </body>
+</html>
